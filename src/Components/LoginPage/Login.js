@@ -1,9 +1,13 @@
 import React,{useState,useRef} from 'react';
 import './Login.css'
-
+import { useHistory } from 'react-router-dom';
+//import { useDispatch } from 'react-redux';
+//import { outboxemailsliceactions } from '../Store/reduxslice';
 
 const Login = () => {
 
+  
+const history=useHistory();
     const inputEmailRef = useRef();
     const inputPassRef = useRef();
     const inputConfirmPassRef = useRef();
@@ -57,6 +61,11 @@ const Login = () => {
                 })
             }
         }).then((data)=>{
+            localStorage.setItem('IDTOKEN',data.idToken);
+            const E_mail=enteredEmail.replace('@','').replace('.','');
+            localStorage.setItem('EMAIL',E_mail);
+
+            history.replace('/welcome')
    
     })
     }
