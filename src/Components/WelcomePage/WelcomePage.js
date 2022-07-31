@@ -51,9 +51,12 @@ const WelcomePage = () => {
   };
 
   const deletehandler = (id) => {
+    console.log(email)
     axios.delete(
-      `https://mailbox-react-default-rtdb.firebaseio.com/email/email/${email}/${id}.json`
-    );
+      `https://mailbox-react-default-rtdb.firebaseio.com/email/${email}/${id}.json`
+    ).then(res=>{
+      console.log(res)
+    }).catch(err=>console.log(err));
   };
 
   const sentdatahandler = async () => {
@@ -68,8 +71,8 @@ const WelcomePage = () => {
     const qwer = [];
     for (const key in data) {
       const x = data[key];
-      for (const key in x) {
-        const y = x[key];
+      for (const keyy in x) {
+        const y = x[keyy];
 
         const z = y.data;
 
